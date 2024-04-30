@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane id="AnchorPane" prefHeight="750.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.adrianarbizu.controller.FormClienteController">
+   <children>
+      <ImageView fitHeight="750.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/Formulario%20Cliente%20(1).png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="tfApellido" layoutX="76.0" layoutY="387.0" prefHeight="26.0" prefWidth="342.0" />
+      <TextField fx:id="tfNombre" layoutX="76.0" layoutY="312.0" prefHeight="26.0" prefWidth="342.0" />
+      <TextField fx:id="tfClienteId" alignment="CENTER" editable="false" layoutX="76.0" layoutY="239.0" prefHeight="10.0" prefWidth="341.0" />
+      <TextField fx:id="tfTelefono" layoutX="78.0" layoutY="464.0" prefHeight="26.0" prefWidth="342.0" />
+      <TextField fx:id="tfDireccion" layoutX="78.0" layoutY="537.0" prefHeight="26.0" prefWidth="342.0" />
+      <TextField fx:id="tfNIT" layoutX="78.0" layoutY="610.0" prefHeight="26.0" prefWidth="342.0" />
+      <GridPane layoutX="128.0" layoutY="645.0" prefHeight="96.0" prefWidth="264.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button fx:id="btnGuardar" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="72.0" prefWidth="123.0" style="-fx-background-radius: 30;" text="Guardar" textAlignment="CENTER" />
+            <Button fx:id="btnCancelar" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="76.0" prefWidth="121.0" style="-fx-background-radius: 30;" text="Cancelar" GridPane.columnIndex="1" />
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>
