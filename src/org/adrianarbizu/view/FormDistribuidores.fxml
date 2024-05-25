@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="748.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.adrianarbizu.controller.FormDistribuidoresController">
+   <children>
+      <ImageView fitHeight="794.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Downloads/Formulario%20Distribuidores%20(1).png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="tf_IDistri" editable="false" layoutX="42.0" layoutY="241.0" prefHeight="32.0" prefWidth="239.0" />
+      <TextField fx:id="tf_Nombre" layoutX="42.0" layoutY="314.0" prefHeight="32.0" prefWidth="247.0" />
+      <TextField fx:id="tf_Direccion" layoutX="42.0" layoutY="384.0" prefHeight="38.0" prefWidth="239.0" />
+      <TextField fx:id="tf_Nit" layoutX="42.0" layoutY="458.0" prefHeight="32.0" prefWidth="239.0" />
+      <TextField fx:id="tf_Telefono" layoutX="42.0" layoutY="528.0" prefHeight="32.0" prefWidth="247.0" />
+      <Button fx:id="btnAceptar" layoutX="345.0" layoutY="412.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="45.0" prefWidth="114.0" text="Aceptar" />
+      <Button fx:id="btnCancelar" layoutX="345.0" layoutY="498.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="45.0" prefWidth="114.0" text="Cancelar" />
+      <Button layoutX="340.0" layoutY="337.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="124.0" style="-fx-background-color: #FDEFB0; -fx-background-radius: 30;" text="Regresar" />
+   </children>
+</AnchorPane>
