@@ -14,11 +14,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import org.adrianarbizu.dao.Conexion;
 import org.adrianarbizu.dto.ClienteDTO;
 import org.adrianarbizu.model.Cliente;
 import org.adrianarbizu.system.Main;
+import org.adrianarbizu.utils.SuperKinalAlert;
 
 /**
  * FXML Controller class
@@ -32,28 +34,45 @@ public class FormClienteController implements Initializable {
        private static Connection conexion = null;
        private static PreparedStatement statement = null;
        
-       @FXML
-       TextField tfClienteId,tfNombre, tfApellido, tfTelefono, tfDireccion, tfNIT;
-       @FXML
-       Button btnGuardar, btnCancelar;
-       
-       @FXML
-       public void handleButtonAction(ActionEvent event){
-           if(event.getSource()== btnCancelar){
-               stage.menuClienteView();
-           }if(event.getSource() == btnGuardar){
-            if(op == 1){
-              agregarCliente();  
-              stage.menuClienteView();
-            }else if(op == 2){
-                editarCliente();
-                ClienteDTO.getClienteDTO().setCliente(null);
-                stage.menuClienteView();
-            }
-        } else if(event.getSource()== btnCancelar){
+    @FXML
+    TextField tfClienteId, tfNombre, tfApellido, tfTelefono, tfDireccion, tfNIT;
+    @FXML
+    Button btnGuardar, btnCancelar;
+    
+    @FXML
+    public void handleButtonAction(ActionEvent event){
+        if(event.getSource() == btnCancelar){
             stage.menuClienteView();
-        } 
-       }
+            ClienteDTO.getClienteDTO().setCliente(null);
+        }else if(event.getSource() == btnGuardar){
+            if(op == 1){
+                if(!tfNombre.getText().equals("") && !tfApellido.getText().equals("") && !tfDireccion.getText().equals("")){
+                    agregarCliente();
+                    SuperKinalAlert.getInstance().mostrarAlertaInformacion(400);
+                    stage.menuClienteView();
+                }else{
+                    SuperKinalAlert.getInstance().mostrarAlertaInformacion(600);
+                    tfNombre.requestFocus();
+                }
+              
+              
+          }else if(op == 2){
+                if(!tfNombre.getText().equals("") && !tfApellido.getText().equals("") && !tfDireccion.getText().equals("")){
+                    if(SuperKinalAlert.getInstance().mostrarAlertaConfirmacion(505).get() == ButtonType.OK){
+                        editarCliente();
+                        ClienteDTO.getClienteDTO().setCliente(null);
+                        SuperKinalAlert.getInstance().mostrarAlertaInformacion(500);
+                        stage.menuClienteView();
+                    }else{
+                        stage.menuClienteView();
+                    }
+                }else{
+                    SuperKinalAlert.getInstance().mostrarAlertaInformacion(600);
+                    tfNombre.requestFocus();
+                }  
+            }
+        }
+    }
     /**
      * Initializes the controller class.
      */
@@ -78,11 +97,12 @@ public class FormClienteController implements Initializable {
             conexion = Conexion.getInstance().obtenerConexion();
             String sql = "call sp_AgregarClientes(?,?,?,?,?)";
             statement = conexion.prepareStatement(sql);
-            statement.setString(1, tfNombre.getText());
-            statement.setString(2, tfApellido.getText());
-            statement.setString(3, tfTelefono.getText());
-            statement.setString(4, tfDireccion.getText());
-            statement.setString(5, tfNIT.getText());
+            statement.setInt(1, Integer.parseInt(tfClienteId.getText()));
+            statement.setString(2, tfNombre.getText());
+            statement.setString(3, tfApellido.getText());
+            statement.setString(4, tfTelefono.getText());
+            statement.setString(5, tfDireccion.getText());
+            statement.setString(6, tfNIT.getText());      
             statement.execute();
             
         

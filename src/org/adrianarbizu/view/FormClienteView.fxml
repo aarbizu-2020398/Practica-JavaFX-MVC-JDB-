@@ -13,7 +13,7 @@
    <children>
       <ImageView fitHeight="750.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../image/Formulario%20Cliente%20(1).png" />
+            <Image url="@../image/FormularioCliente.png" />
          </image>
       </ImageView>
       <TextField fx:id="tfApellido" layoutX="76.0" layoutY="387.0" prefHeight="26.0" prefWidth="342.0" />

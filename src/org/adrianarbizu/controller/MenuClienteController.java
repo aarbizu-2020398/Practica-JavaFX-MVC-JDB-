@@ -114,7 +114,7 @@ public class MenuClienteController implements Initializable {
         ArrayList<Cliente> clientes = new ArrayList<>();
         try{
             conexion = Conexion.getInstance().obtenerConexion();
-            String sql = "call sp_ListarClientes();";
+            String sql = "call sp_listarClientes();";
             statement = conexion.prepareStatement(sql);
             resultSet = statement.executeQuery();
             while(resultSet.next()){

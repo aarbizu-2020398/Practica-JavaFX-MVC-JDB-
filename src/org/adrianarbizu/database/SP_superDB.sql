@@ -1,7 +1,6 @@
-drop database if exists SP_superDB;
+ drop database if exists SP_superDB;
 
-
-create database SP_superDB;
+ create database SP_superDB;
 
 use SP_superDB;
 
@@ -791,4 +790,24 @@ Delimiter ;
 -- call sp_listarCargo();
 
 
+Delimiter $$
+create procedure sp_ListarTicketSoporte()
+	Begin
+		Select TS.ticketSoporteId, TS.descripcionTicket , TS.estatus ,  
+        CONCAT("Id: ",C.clienteId, " | ",C.nombre, " " , C.apellido) As cliente , TS.facturaId from TicketSoporte TS
+        join Clientes C on TS.clienteId =  C.clienteId;
+    End $$
+Delimiter ;
 
+
+
+Delimiter $$
+create procedure sp_ListarFacturas()
+	begin
+		select F.facturaId, F.fecha, F.hora ,
+        CONCAT("Id: ",C.clienteId, " | ",C.nombre, " " , C.apellido) As cliente ,
+        CONCAT("Id: ",E.empleadoId, " | ",E.nombreEmpleado, " " , E.apellidoEmpleado) As empleado, F.total from Facturas F
+        join Clientes C on F.clienteId =  C.clienteId
+		join Empleados E on F.empleadoId = E.empleadoId;	
+	End $$
+Delimiter ;

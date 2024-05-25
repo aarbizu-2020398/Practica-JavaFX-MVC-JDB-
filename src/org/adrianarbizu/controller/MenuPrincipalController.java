@@ -5,14 +5,16 @@
  */
 package org.adrianarbizu.controller;
 
-
-
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
+import javafx.stage.Stage;
 import org.adrianarbizu.system.Main;
 /**
  *
@@ -21,8 +23,9 @@ import org.adrianarbizu.system.Main;
 public class MenuPrincipalController implements Initializable{
     private Main stage;
     @FXML
-    MenuItem botClientes;
+    MenuItem botClientes, botTicketSoporte,botProductos,botCargos,botCompras, botDetalleFactura,botDistribuidores;
     
+
     @Override
     public void initialize (URL Location, ResourceBundle resources){
     
@@ -36,9 +39,23 @@ public class MenuPrincipalController implements Initializable{
         this.stage = stage;
     }
     @FXML
-    public void handleButtonAction(ActionEvent event){
-        if(event.getSource()== botClientes){
+
+public void handleButtonAction(ActionEvent event) {
+    if (event.getSource() == botClientes) {
         stage.menuClienteView();
-        }
+    } else if (event.getSource() == botTicketSoporte) {
+        stage.menuTicketSoporteView();
+    } else if (event.getSource() == botProductos) {
+        stage.menuProductosControllerView();
+    } else if (event.getSource() == botCargos) {
+        
+    } else if (event.getSource() == botCompras) {
+        stage.menuComprasProductosView();
+    } else if (event.getSource() == botDetalleFactura) {
+        stage.menuDetalleFacturasView();
+    }else if (event.getSource() == botDistribuidores) {
+        stage.menuDistribuidoresView();
+    }
+    
     }
 }

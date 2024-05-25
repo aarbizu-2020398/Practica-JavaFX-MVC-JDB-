@@ -3,10 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/informatica/Desktop/superKinalIN5CM/superKinalIN5CM/src/org/adrianarbizu/model/Cliente.java</file>
-            <file>file:/C:/Users/informatica/Desktop/superKinalIN5CM/superKinalIN5CM/src/org/adrianarbizu/controller/FormClienteController.java</file>
-            <file>file:/C:/Users/informatica/Desktop/superKinalIN5CM/superKinalIN5CM/src/org/adrianarbizu/controller/MenuClienteController.java</file>
-            <file>file:/C:/Users/informatica/Desktop/superKinalIN5CM/superKinalIN5CM/src/org/adrianarbizu/dto/ClienteDTO.java</file>
+            <file>file:/C:/Users/Adrian/Desktop/SolucionAdrian%20(1)/Practica-JavaFX-MVC-JDB-/src/org/adrianarbizu/controller/FormClienteController.java</file>
+            <file>file:/C:/Users/Adrian/Desktop/SolucionAdrian%20(1)/Practica-JavaFX-MVC-JDB-/src/org/adrianarbizu/system/Main.java</file>
+            <file>file:/C:/Users/Adrian/Desktop/SolucionAdrian%20(1)/Practica-JavaFX-MVC-JDB-/src/org/adrianarbizu/controller/MenuDistribuidoresController.java</file>
         </group>
     </open-files>
 </project-private>
