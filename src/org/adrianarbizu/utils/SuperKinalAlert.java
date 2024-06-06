@@ -67,5 +67,13 @@ public class SuperKinalAlert {
         
         return action;
     }
+
+    public void alertBienvenida(String usuario) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void mostrarAlertaInfo(int i) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

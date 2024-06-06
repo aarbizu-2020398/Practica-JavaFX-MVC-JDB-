@@ -38,4 +38,8 @@ public class Conexion {
     public Connection obtenerConexion() throws SQLException{
         return DriverManager.getConnection(jdbcurl, user, password);
     }
+
+    public Object getConexion() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
