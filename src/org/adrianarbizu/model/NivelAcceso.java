@@ -5,10 +5,6 @@
  */
 package org.adrianarbizu.model;
 
-/**
- *
- * @author diego
- */
 public class NivelAcceso {
     
     private int nivelesAccesoId;

@@ -1,8 +1,8 @@
--- drop database if exists DDL_superDB;
+ -- drop database if exists superDB;
 
--- create database if not exists DDL_superDB;
+create database if not exists superDB;
 
-use SP_superDB;
+use superDB;
 
 create table Clientes(
 	clienteID int not null auto_increment,
@@ -147,8 +147,30 @@ create table DetalleFacturas(
 );
 
 
+create table NivelesAcceso(
+	nivelAccesoId int not null auto_increment,
+    nivelAcceso varchar(30) not null,
+	primary key PK_nivelAccesoId(nivelAccesoId)
+);
 
-insert into Clientes(nombre, apellido,telefono, direccion, NIT) values
+
+
+Create table Usuarios(
+	usuarioId int not null auto_increment,
+    usuario varchar(30) not null,
+    contrasena varchar(50) not null,
+    empleadoId int not null,
+    nivelAccesoId int not null,
+	primary key PK_usuarioId(usuarioId),
+	constraint FK_Usuarios_NivelesAcceso foreign key Usuarios(nivelAccesoId) 
+		references NivelesAcceso(nivelAccesoId),
+	constraint FK_Usuarios_Empleados foreign key Usuarios(empleadoId) 
+		references Empleados(empleadoId)
+);
+
+Select * from Usuarios;
+
+/*insert into Clientes(nombre, apellido,telefono, direccion, NIT) values
 ('Carlos','Perez', '5742-6921','Ciudad','154213-023'),
 ('Juan', 'González','4323-8754','12 Avenida Sur, Zona 10, Ciudad de Guatemala','131654-025'),
 ('María', 'López', '5697-4651','Calle de los Mangos, Antigua Guatemala','2154613-05'),

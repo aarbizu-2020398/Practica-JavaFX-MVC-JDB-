@@ -61,7 +61,7 @@ public class FormUsuariosController implements Initializable {
     ComboBox cmb_Empleado, cmb_NivelAcceso;
     
     @FXML
-    Button button_Registrar, button_cancel, button_AgEmpledo;
+    Button btn_Registrar, btn_cancel, btn_agregarEmpledo, btn_AnadirUsuario;
     
     
     public void crearUsuario(){
@@ -160,15 +160,17 @@ public class FormUsuariosController implements Initializable {
         return FXCollections.observableList(nivelAcceso);
     }
     
-    public void handleButtonAction(ActionEvent event){
-        if(event.getSource() == button_Registrar){
-            crearUsuario();
-            stage.loginView();
-        }else if(event.getSource() == button_cancel){
-            stage.loginView();
-        }else if(event.getSource() == button_AgEmpledo){
-            stage.formEmpleadosView(1);
+public void handleButtonAction(ActionEvent event) throws Exception {
+    if(event.getSource() == btn_Registrar) {
+        crearUsuario();
+        stage.loginView();
+    } else if(event.getSource() == btn_cancel) {
+        stage.loginView();
+    } else if(event.getSource() == btn_agregarEmpledo) {
+        stage.formEmpleadosView(1);
+    } else if(event.getSource() == btn_AnadirUsuario) {
+        stage.formUsuariosView();
         }
     }
-    
 }
+

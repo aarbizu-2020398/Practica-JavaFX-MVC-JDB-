@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="878.0" prefWidth="551.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.adrianarbizu.controller.LoginController">
+   <children>
+      <ImageView fitHeight="1061.0" fitWidth="635.0" layoutX="-18.0" layoutY="-74.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/Login.png" />
+         </image>
+      </ImageView>
+      <PasswordField fx:id="tf_Password" layoutX="99.0" layoutY="535.0" prefHeight="78.0" prefWidth="422.0" />
+      <TextField fx:id="tf_Usuario" layoutX="95.0" layoutY="331.0" prefHeight="78.0" prefWidth="422.0" />
+      <Button fx:id="btn_IniciarSesion" layoutX="261.0" layoutY="674.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="58.0" prefWidth="162.0" text="Iniciar Sesión" />
+      <Button fx:id="btn_AnadirUsuario" layoutX="444.0" layoutY="679.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="58.0" prefWidth="146.0" text="Añadir Usuario" />
+   </children>
+</AnchorPane>

@@ -25,12 +25,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javax.swing.JOptionPane;
-import org.adrianarbizu.bean.Cliente;
 import org.adrianarbizu.model.Empleados;
 import org.adrianarbizu.bean.Factura;
 import org.adrianarbizu.dao.Conexion;
 import org.adrianarbizu.system.Main;
 import javafx.scene.control.DatePicker;
+import org.adrianarbizu.model.Cliente;
 
 
 /**

@@ -20,6 +20,9 @@ import org.adrianarbizu.utils.SuperKinalAlert;
 
 public class LoginController implements Initializable {
 
+    /**
+     * Initializes the controller class.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -40,26 +43,28 @@ public class LoginController implements Initializable {
         LoginController.stage = stage;
     }
     
-    @FXML
-    Button btn_IniciarSesion, btn_Registrar; 
+    
     
     @FXML
-    TextField tf_Usuario;
+    private Button btn_IniciarSesion, btn_Registrar, btn_AnadirUsuario; 
     
     @FXML
-    PasswordField tf_Password;
+    private TextField tf_Usuario;
     
-    public Usuario buscarUsuario() {
+    @FXML
+    private PasswordField tf_Password;
+    
+    public Usuario buscarUsuario(){
         Usuario usuario = null;
         
-        try {
+        try{
             conexion = Conexion.getInstance().obtenerConexion();
             String sql = "call sp_BuscarUsuario(?)";
             statement = conexion.prepareStatement(sql);
-            statement.setString(1, tf_Usuario.getText());
+            statement.setString(1,tf_Usuario.getText());
             resultSet = statement.executeQuery();
             
-            if (resultSet.next()) {
+            if(resultSet.next()){
                 int usuarioId = resultSet.getInt("usuarioId");
                 String usuarios = resultSet.getString("usuario");
                 String password = resultSet.getString("contrasenia");
@@ -67,53 +72,62 @@ public class LoginController implements Initializable {
                 int empleadoId = resultSet.getInt("empleadoId");
                 
                 usuario = new Usuario(usuarioId, usuarios, password, nivelesAccesoId, empleadoId);
+                
             }
             
-        } catch (SQLException e) {
+        }catch(SQLException e){
             e.printStackTrace();
-        } finally {
-            try {
-                if (conexion != null) {
+        }finally{
+                 try{
+                    if(conexion != null){
                     conexion.close();
-                }
-                if (statement != null) {
+                    }
+                    if(statement != null){
                     statement.close();
-                }
-                if (resultSet != null) {
+                    }
+                    if(resultSet != null){
                     resultSet.close();
+                    }
+                 }catch(Exception e){{
+                    e.printStackTrace();
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
             }
         }
         return usuario;
     }
     
-    public void handleButtonAction(ActionEvent event) {
-        if (event.getSource() == btn_IniciarSesion) {
-            if (op == 0) {
+    public void handleButtonAction(ActionEvent event) throws Exception{
+        if(event.getSource() == btn_IniciarSesion){
+            if(op == 0){
                 Usuario usuario = buscarUsuario();    
-                if (usuario != null) {
-                    if (PasswordUtils.getInstance().checkPassword(tf_Password.getText(), usuario.getPassword())) {
+                if(usuario != null){
+                    if(PasswordUtils.getInstance().checkPassword(tf_Password.getText(), usuario.getPassword())){
                         SuperKinalAlert.getInstance().alertBienvenida(usuario.getUsuario());
-                        if (usuario.getNivelesAccesoId() == 1) { // Admin
-                            btn_Registrar.setDisable(false);
-                            btn_IniciarSesion.setText("Ir al Menú");
-                            op = 1;
-                        } else if (usuario.getNivelesAccesoId() == 2) { // Empleado
+                        if(usuario.getNivelesAccesoId() == 1){ // Admin
+                           btn_Registrar.setDisable(false);
+                           btn_IniciarSesion.setText("Ir al Menú");
+                           op = 1;
+                        }else if(usuario.getNivelesAccesoId() == 2){ // Empledo
                             stage.menuPrincipalView();
                         }
-                    } else {
+                    }else{
                         SuperKinalAlert.getInstance().mostrarAlertaInfo(800);
                     }
-                } else {
-                    SuperKinalAlert.getInstance().mostrarAlertaInfo(900);
+                }else{
+                  SuperKinalAlert.getInstance().mostrarAlertaInfo(900);
                 }
-            } else {
+            }else{
                 stage.menuPrincipalView();
             }
-        } else if (event.getSource() == btn_Registrar) {
+        }else if(event.getSource() == btn_Registrar){
             stage.formUsuariosView();
         }
     }
+    
+    
 }
+
+
+
+
+

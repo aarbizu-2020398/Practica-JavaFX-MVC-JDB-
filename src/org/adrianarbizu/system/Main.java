@@ -1,5 +1,8 @@
 package org.adrianarbizu.system;
 
+import java.io.IOException;
+
+
 import java.io.InputStream;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -10,7 +13,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.adrianarbizu.controller.FormClienteController;
 import org.adrianarbizu.controller.FormDistribuidoresController;
+import org.adrianarbizu.controller.FormUsuariosController;
 import org.adrianarbizu.controller.LoginController;
+import org.adrianarbizu.controller.MenuCargosController;
 import org.adrianarbizu.controller.MenuClienteController;
 import org.adrianarbizu.controller.MenuComprasController;
 import org.adrianarbizu.controller.MenuDetalleFacturasController;
@@ -59,6 +64,15 @@ public class Main extends Application {
         try {
             MenuClienteController menuClientesView = (MenuClienteController) switchScene("MenuClientesView.fxml", 1200, 750);
             menuClientesView.setStage(this);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+     public void menuCargoView() {
+        try {
+            MenuCargosController menuCargoView = (MenuCargosController) switchScene("MenuCargoView.fxml", 650, 700);
+            menuCargoView.setStage(this);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -129,13 +143,7 @@ public class Main extends Application {
         }
     }
 
-    public void formUsuariosView() {
-        try {
-            // Implementa la lógica para cargar la vista de formUsuarios aquí
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-    }
+
 
     public void loginView() {
         try {
@@ -145,12 +153,26 @@ public class Main extends Application {
             System.out.println(e.getMessage());
         }
     }
-
-    public void formEmpleadosView(int op) {
-        try {
-            // Implementa la lógica para cargar la vista de formEmpleados aquí
+    
+public void formUsuariosView() throws Exception {
+    try {
+            FormUsuariosController formUsuariosView = (FormUsuariosController) switchScene("FormUsuarios.fxml", 900, 716);
+            formUsuariosView.setStage(this);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
+
+    public void formEmpleadosView(int i) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void formsUsuariosView() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+     public static void main(String[] args) {
+        launch(args);
+    }
+
 }

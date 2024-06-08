@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Factura" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="aa65687d-840f-4c2e-bf88-2dcaa006645b">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DBSuperKinalIN5CM"/>
+	<parameter name="factId" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[select * from DetalleFacturas
+join Facturas on DetalleFacturas.facturaId = Factuaras.facturaId
+  join Clientes on Facturas.clienteId = Clientes.clienteId
+  join Productos on DetalleFacturas.productoId =Productos.productoId
+  where Facturas.facturaId =1]]>
+	</queryString>
+	<field name="Nombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nombre"/>
+		<property name="com.jaspersoft.studio.field.name" value="nombre"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
+	<field name="Apellido" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="apellido"/>
+		<property name="com.jaspersoft.studio.field.name" value="apellido"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
+	<field name="Fecha" class="java.util.Date">
+		<property name="com.jaspersoft.studio.field.label" value="fecha"/>
+		<property name="com.jaspersoft.studio.field.name" value="fecha"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Facturas"/>
+	</field>
+	<field name="PreciodeVentaUnitario" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="precioVentaUnitario"/>
+		<property name="com.jaspersoft.studio.field.name" value="precioVentaUnitario"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="productos"/>
+	</field>
+	<field name="Nit" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="NIT"/>
+		<property name="com.jaspersoft.studio.field.name" value="NIT"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
+	<field name="NombreProducto" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nombreProducto"/>
+		<property name="com.jaspersoft.studio.field.name" value="nombreProducto"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="productos"/>
+	</field>
+	<field name="FacturaId" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="facturaId"/>
+		<property name="com.jaspersoft.studio.field.name" value="facturaId"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Facturas"/>
+	</field>
+	<field name="Direccion" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="direccion"/>
+		<property name="com.jaspersoft.studio.field.name" value="direccion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
+	<field name="total" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="total"/>
+		<property name="com.jaspersoft.studio.field.name" value="total"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Facturas"/>
+	</field>
+	<variable name="FechaActual" class="java.sql.Date"/>
+	<variable name="PrecioSinIva" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$V{PrecioSinIva}*0.12]]></variableExpression>
+	</variable>
+	<variable name="Iva" class="java.lang.Double">
+		<variableExpression><![CDATA[$V{PrecioSinIva}*0.12]]></variableExpression>
+	</variable>
+	<variable name="TotalSinIva" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{PreciodeVentaUnitario}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="110" splitType="Stretch">
+			<image>
+				<reportElement x="-10" y="0" width="130" height="110" uuid="ad472059-3258-463c-89a6-50010b7aad8f"/>
+				<imageExpression><![CDATA["C:/Users/Informatica/Downloads/images.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="120" y="5" width="210" height="100" uuid="d9e2d42b-c2aa-41f9-9a85-b4ff7a8fffd0"/>
+				<textElement>
+					<font fontName="Arial Black" size="45"/>
+				</textElement>
+				<text><![CDATA[Facturas]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="113" splitType="Stretch">
+			<textField>
+				<reportElement x="100" y="24" width="260" height="36" uuid="5ea710f0-852f-402d-b877-801dc034b179"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<textFieldExpression><![CDATA["NO.FACTURAS"+$F{Fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="111" y="59" width="250" height="50" uuid="4f1ba936-84bc-45a7-a06c-41992bc623ab"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<textFieldExpression><![CDATA["FECHA"+$F{Fecha}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="97" splitType="Stretch">
+			<textField>
+				<reportElement x="20" y="26" width="550" height="30" uuid="573cf7a2-e382-4fdb-9e7e-f9703973cee9">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6392d343-94ee-427b-a9b3-fd59272d87b2"/>
+				</reportElement>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA["DIRECCION"+$F{Direccion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="20" y="55" width="160" height="30" uuid="3300aee2-961e-4fd0-aae5-013b0418015e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6d287290-1ab6-4225-8f10-d8e8cd312a63"/>
+				</reportElement>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA["NIT"+$F{Nit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="180" y="55" width="230" height="30" uuid="ef6ddd47-e3e6-446c-8a93-b8bc129b8ca2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="11e2c14f-1115-412f-b088-0a3cb0b26e51"/>
+				</reportElement>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA["NOMBRE"+$F{Nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="412" y="55" width="180" height="30" uuid="98bc6907-e561-48ef-827e-2bc8c4aec039">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="778991a0-7129-42a0-9014-c8d0004472c8"/>
+				</reportElement>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA["APELLIDO"+$F{Apellido}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="156" splitType="Stretch">
+			<textField>
+				<reportElement x="100" y="23" width="261" height="47" uuid="1cbd8871-76af-450b-bdbd-eb363c379418"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA["NOMBREPRODUCTO"+$F{NombreProducto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="361" y="30" width="159" height="40" uuid="28f06bee-61dc-4378-9174-126e703bd459">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9b841f1c-ddfd-4776-91ce-7146abc1420c"/>
+				</reportElement>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Q"+$F{PreciodeVentaUnitario}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="50" y="23" width="50" height="47" uuid="51bd915a-c393-4803-bde8-475fd459b4b5"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<text><![CDATA[1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="70" width="160" height="35" uuid="93cf2d61-ec75-4973-af1c-4d78d7ecad91"/>
+				<textElement>
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[Precio Sin Iva]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="360" y="70" width="160" height="37" uuid="a069bab8-fa78-4d18-b07c-4875bf1ec94c"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Q"+$V{PrecioSinIva}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="280" y="107" width="80" height="43" uuid="f8e661a7-262a-4a9b-baa7-d3bcb06c8859"/>
+				<textElement>
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[IVA]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="360" y="110" width="160" height="40" uuid="60701899-cfbb-47a4-ba13-0948dad09859"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Q"+$V{TotalSinIva}*0.12]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="71" splitType="Stretch">
+			<staticText>
+				<reportElement x="270" y="20" width="110" height="30" uuid="9d19f593-e9d3-4804-a788-b03fb177a604"/>
+				<textElement>
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[TOTAL:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="380" y="20" width="140" height="30" uuid="cd213a53-7fab-4fed-b872-51da68f163bf"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Q"+$F{total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="59" splitType="Stretch">
+			<staticText>
+				<reportElement x="204" y="21" width="100" height="30" uuid="2eb008b4-c813-487f-997a-d9a403387301"/>
+				<text><![CDATA[ghfghgf]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

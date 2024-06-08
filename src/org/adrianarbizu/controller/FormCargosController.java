@@ -5,10 +5,24 @@
  */
 package org.adrianarbizu.controller;
 
+import org.adrianarbizu.system.Main;
+
 /**
  *
  * @author Adrian
  */
 public class FormCargosController {
+    
+    public Main stage;
+
+    public Main getStage() {
+        return stage;
+    }
+
+    public void setStage(Main stage) {
+        this.stage = stage;
+    }
+    
+    
     
 }

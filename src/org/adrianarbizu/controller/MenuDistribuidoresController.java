@@ -165,10 +165,7 @@ public class MenuDistribuidoresController implements Initializable {
             DistribuidorDTO.getDistribuidorDTO().setDistribuidor((Distribuidores) tblDistri.getSelectionModel().getSelectedItem());
             stage.formDistribuidoresView(2);
         } else if (event.getSource() == btnEliminar) {
-            if (SuperKinalAlert.getInstance().mostrarAlertaConfirmacion(700).get() == ButtonType.OK) {
-                eliminarDistribuidores(((Distribuidores) tblDistri.getSelectionModel().getSelectedItem()).getDistribuidorId());
-                cargarDatos();
-            }
+         
         } else if (event.getSource() == btnBuscar) {
             tblDistri.getItems().clear();
             if (tf_Buscar.getText().equals("")) {

@@ -22,6 +22,7 @@ import org.adrianarbizu.system.Main;
  */
 public class MenuPrincipalController implements Initializable{
     private Main stage;
+    
     @FXML
     MenuItem botClientes, botTicketSoporte,botProductos,botCargos,botCompras, botDetalleFactura,botDistribuidores;
     
@@ -48,7 +49,7 @@ public void handleButtonAction(ActionEvent event) {
     } else if (event.getSource() == botProductos) {
         stage.menuProductosControllerView();
     } else if (event.getSource() == botCargos) {
-        
+        stage.menuCargoView();
     } else if (event.getSource() == botCompras) {
         stage.menuComprasProductosView();
     } else if (event.getSource() == botDetalleFactura) {
